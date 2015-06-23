@@ -10,6 +10,7 @@ public class HeartModel implements HeartModelInterface, Runnable
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
 	int time = 1000;
+	int time2 = 1000;
     int bpm = 90;
 	Random random = new Random(System.currentTimeMillis());
 	Thread thread;
@@ -27,8 +28,10 @@ public class HeartModel implements HeartModelInterface, Runnable
 			cuenta++;
 		return singleton;
 	}
+	
+	/*
 	public void run() {
-		int lastrate = -1;
+
 
 		for(;;) {
 			int change = random.nextInt(10);
@@ -48,7 +51,39 @@ public class HeartModel implements HeartModelInterface, Runnable
 				Thread.sleep(time);
 			} catch (Exception e) {}
 		}
+	}*/
+	
+	public void run() {
+		int lastrate = -1;
+		
+		for(;;) {
+			notifyBPMObservers();
+			
+			try {
+				Thread.sleep(1);
+				time2--;
+				if(time2==0)
+				{
+					int change = random.nextInt(10);
+					if (random.nextInt(2) == 0) {
+						change = 0 - change;
+					}
+					int rate = 60000/(time + change);
+					if (rate < 120 && rate > 50) {
+						time += change;
+						notifyBeatObservers();
+						if (rate != lastrate) {
+							lastrate = rate;
+							notifyBPMObservers();
+						}
+					}
+					System.out.println(time);
+					time2 = time;
+				}
+			} catch (Exception e) {}
+		}
 	}
+	
 	public int getHeartRate() {
 		return 60000/time;
 	}
