@@ -19,11 +19,13 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     JButton setBPMButton;
     JButton increaseBPMButton;
     JButton decreaseBPMButton;
+    JButton upBPMButton;
+    JButton downBPMButton;
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
-
+    
     public DJView(ControllerInterface controller, BeatModelInterface model) {	
 		this.controller = controller;
 		this.model = model;
@@ -33,7 +35,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     
     public void createView() {
 		// Create all Swing components here
-        viewPanel = new JPanel(new GridLayout(1, 2));
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	viewPanel = new JPanel(new GridLayout(1, 2));
         viewFrame = new JFrame("View");
         viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         viewFrame.setSize(new Dimension(100, 80));
@@ -49,7 +52,27 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
         viewFrame.setVisible(true);
 	}
   
-  
+    public void createView2()
+    {
+    	int filas=8;
+    	int columnas=8;
+    	
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	JPanel[][] galpon= new JPanel[filas][columnas]; 
+		JPanel	contenedor= new JPanel(new GridLayout(filas,columnas));
+		for(int i=0;i<filas;i++)
+    		for(int j=0;j<columnas;j++)
+    		{
+    			galpon[i][j]=new JPanel(new GridLayout(1,1));
+    			galpon[i][j].setBackground(Color.BLACK);
+    			contenedor.add(galpon[i][j]);
+    		}
+    	JFrame paredes = new JFrame("Galpon");
+    	paredes.getContentPane().add(contenedor, BorderLayout.CENTER);
+        paredes.pack();
+        paredes.setVisible(true);
+    }
+    
     public void createControls() {
 		// Create all Swing components here
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -61,29 +84,32 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 
         menuBar = new JMenuBar();
         menu = new JMenu("DJ Control");
+        
         startMenuItem = new JMenuItem("Start");
-        menu.add(startMenuItem);
+        menu.add(startMenuItem);       
         startMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 controller.start();
             }
         });
+        
         stopMenuItem = new JMenuItem("Stop");
-        menu.add(stopMenuItem); 
+        menu.add(stopMenuItem);      
         stopMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 controller.stop();
             }
         });
+        
         JMenuItem exit = new JMenuItem("Quit");
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 System.exit(0);
             }
         });
-
         menu.add(exit);
         menuBar.add(menu);
+        
         controlFrame.setJMenuBar(menuBar);
 
         bpmTextField = new JTextField(2);
@@ -92,22 +118,28 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
         setBPMButton.setSize(new Dimension(10,40));
         increaseBPMButton = new JButton(">>");
         decreaseBPMButton = new JButton("<<");
+        upBPMButton = new JButton("^");
+        downBPMButton = new JButton("v");
         setBPMButton.addActionListener(this);
         increaseBPMButton.addActionListener(this);
         decreaseBPMButton.addActionListener(this);
+        upBPMButton.addActionListener(this);
+        downBPMButton.addActionListener(this);
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
-
+ 
 		buttonPanel.add(decreaseBPMButton);
 		buttonPanel.add(increaseBPMButton);
 
         JPanel enterPanel = new JPanel(new GridLayout(1, 2));
         enterPanel.add(bpmLabel);
         enterPanel.add(bpmTextField);
-        JPanel insideControlPanel = new JPanel(new GridLayout(3, 1));
+        JPanel insideControlPanel = new JPanel(new GridLayout(5, 1));
         insideControlPanel.add(enterPanel);
         insideControlPanel.add(setBPMButton);
+        insideControlPanel.add(upBPMButton);
         insideControlPanel.add(buttonPanel);
+        insideControlPanel.add(downBPMButton);
         controlPanel.add(insideControlPanel);
         
         bpmLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
