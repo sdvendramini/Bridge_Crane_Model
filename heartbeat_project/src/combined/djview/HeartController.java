@@ -18,7 +18,7 @@ public class HeartController implements ControllerInterface {
 	public void stop() {}
     
 	public void increaseBPM() {
-		System.out.println("jajajajaj");
+		System.out.println("aloha");
 	}
     
 	public void decreaseBPM() {}
