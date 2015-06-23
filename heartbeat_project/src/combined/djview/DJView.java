@@ -2,6 +2,7 @@ package combined.djview;
     
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class DJView implements ActionListener,  BeatObserver, BPMObserver {
@@ -160,7 +161,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			}
 		}
 	}
-  
+
+    
 	public void updateBeat() {
 		if (beatBar != null) {
 			 beatBar.setValue(100);
