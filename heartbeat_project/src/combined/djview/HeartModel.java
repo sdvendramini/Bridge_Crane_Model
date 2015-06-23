@@ -2,7 +2,11 @@ package combined.djview;
 
 import java.util.*;
 
-public class HeartModel implements HeartModelInterface, Runnable {
+public class HeartModel implements HeartModelInterface, Runnable 
+{
+	private static HeartModel singleton;
+	private static int cuenta;
+	
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
 	int time = 1000;
@@ -10,11 +14,19 @@ public class HeartModel implements HeartModelInterface, Runnable {
 	Random random = new Random(System.currentTimeMillis());
 	Thread thread;
 
-	public HeartModel() {
+	private HeartModel() {
 		thread = new Thread(this);
 		thread.start();
 	}
 
+	public static HeartModel getInstance()
+	{
+		if(singleton==null)
+			singleton = new HeartModel();
+		else
+			cuenta++;
+		return singleton;
+	}
 	public void run() {
 		int lastrate = -1;
 
@@ -39,6 +51,11 @@ public class HeartModel implements HeartModelInterface, Runnable {
 	}
 	public int getHeartRate() {
 		return 60000/time;
+	}
+	
+	public int getCuenta()
+	{
+		return cuenta;
 	}
 
 	public void registerObserver(BeatObserver o) {

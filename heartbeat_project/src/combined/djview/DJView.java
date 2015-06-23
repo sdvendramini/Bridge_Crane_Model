@@ -145,7 +145,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			controller.decreaseBPM();
 		}
     }
-
+/*
 	public void updateBPM() {
 		if (model != null) {
 			int bpm = model.getBPM();
@@ -160,7 +160,14 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 			}
 		}
 	}
-  
+  */
+    
+    public void updateBPM() {
+		if (model != null) {
+			bpmOutputLabel.setText("Current BPM: " + model.getBPM());
+		}
+	}
+    
 	public void updateBeat() {
 		if (beatBar != null) {
 			 beatBar.setValue(100);
