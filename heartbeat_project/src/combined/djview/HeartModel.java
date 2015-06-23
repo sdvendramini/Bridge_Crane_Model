@@ -54,9 +54,7 @@ public class HeartModel implements HeartModelInterface, Runnable
 	}*/
 	
 	public void run() {
-		int lastrate = -1;
-		
-		for(;;) {
+			for(;;) {
 			notifyBPMObservers();
 			
 			try {
@@ -72,10 +70,6 @@ public class HeartModel implements HeartModelInterface, Runnable
 					if (rate < 120 && rate > 50) {
 						time += change;
 						notifyBeatObservers();
-						if (rate != lastrate) {
-							lastrate = rate;
-							notifyBPMObservers();
-						}
 					}
 					System.out.println(time);
 					time2 = time;
