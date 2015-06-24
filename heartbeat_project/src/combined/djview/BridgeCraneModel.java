@@ -11,6 +11,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	int [][] matriz;
 	int filas=8;
 	int columnas=8;
+	int a;
+	int b;
 	Thread thread;
 
 	public BridgeCraneModel () {
@@ -20,8 +22,22 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		thread.start();
 	}
 
-	public void run(){
-		//
+	public void run()
+	{
+		for(;;)
+		{
+			try
+			{
+				notifyMatrizObserver();
+			}
+			catch(NullPointerException e){};
+
+			try
+			{
+				Thread.sleep(50);
+			}
+			catch(Exception e){};
+		}
 	}
 	
 	public int[][] getMatriz(){
@@ -93,8 +109,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void inicializarMatriz(){
 		Random random=new Random();
-		int a=random.nextInt(8);
-		int b=random.nextInt(8);
+		a=random.nextInt(8);
+		b=random.nextInt(8);
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
@@ -106,4 +122,43 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 			}
 	} 
 	
+	public void cambiarMatriz()
+	{
+		for (int i=0; i<filas; i++)
+			for (int j=0; j<columnas; j++)
+			{
+				matriz[i][j]=0;			
+			}
+		matriz[a][b] = 1;
+		System.out.println(a + "  " + b );
+	}
+	
+	public void irDerecha()
+	{
+		if(b!=7)
+			b++;
+		cambiarMatriz();
+	}
+	
+	public void irIzquierda()
+	{
+		if(b!=0)
+			b--;
+		cambiarMatriz();
+	}
+	
+	public void irArriba()
+	{
+		if(a!=0)
+			a--;
+		cambiarMatriz();
+	}
+	
+	public void irAbajo()
+	{
+		if(a!=7)
+			a++;
+		cambiarMatriz();
+	}
+
 }

@@ -32,10 +32,19 @@ public class BridgeCraneAdapter implements BeatModelInterface {
 	public void removeObserver(BPMObserver o) {
 		bridgeCrane.removeObserver(o);
 	}
-	
+
+
+	public void registerObserver(MatrizObserver o) {
+		bridgeCrane.registerObserver(o);	
+	}
+
+	public void removeObserver(MatrizObserver o) {
+		bridgeCrane.removeObserver(o);
+	}
 	
 	public int[][] getMatriz(){
-		return bridgeCrane.getMatriz();}
+		return bridgeCrane.getMatriz();
+	}
 
 }
 

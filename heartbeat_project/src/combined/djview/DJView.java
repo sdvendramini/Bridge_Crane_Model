@@ -32,6 +32,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		this.model = model;
 		model.registerObserver((BeatObserver)this);
 		model.registerObserver((BPMObserver)this);
+		model.registerObserver((MatrizObserver)this);
     }
     
     public void createView() {
@@ -64,10 +65,10 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		for(int i=0;i<filas;i++)
     		for(int j=0;j<columnas;j++)
     		{
-    			JButton hola = new JButton(".");
+    			//JButton hola = new JButton(".");
     			posiciones[i][j]=new JPanel(new GridLayout(1,1));
     			posiciones[i][j].setBackground(Color.BLACK);
-    			posiciones[i][j].add(hola);
+    			//posiciones[i][j].add(hola);
     			deposito.add(posiciones[i][j]);
     		}
     	JFrame paredes = new JFrame("Galpon");
@@ -181,6 +182,10 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 			controller.increaseBPM();
 		} else if (event.getSource() == decreaseBPMButton) {
 			controller.decreaseBPM();
+		} else if (event.getSource() == upBPMButton) {
+			controller.up();
+		} else if (event.getSource() == downBPMButton) {
+			controller.down();
 		}
     }
 
@@ -211,7 +216,6 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		
 		BridgeCraneAdapter m = (BridgeCraneAdapter) model;
 		matriz = m.getMatriz();
-		
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
