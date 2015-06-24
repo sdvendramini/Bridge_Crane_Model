@@ -142,28 +142,28 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
 	public void irDerecha()
 	{
-		if(b!=7)
+		if(b!=7 && bpm!=-20)
 			b++;
 		cambiarMatriz();
 	}
 	
 	public void irIzquierda()
 	{
-		if(b!=0)
+		if(b!=0 && bpm!=-20)
 			b--;
 		cambiarMatriz();
 	}
 	
 	public void irArriba()
 	{
-		if(a!=0)
+		if(a!=0 && bpm!=-20)
 			a--;
 		cambiarMatriz();
 	}
 	
 	public void irAbajo()
 	{
-		if(a!=7)
+		if(a!=7 && bpm!=-20)
 			a++;
 		cambiarMatriz();
 	}

@@ -26,6 +26,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
+    JLabel positionNumber;
     
     public DJView(ControllerInterface controller, BeatModelInterface model) {	
 		this.controller = controller;
@@ -73,9 +74,16 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     			//posiciones[i][j].add(hola);
     			deposito.add(posiciones[i][j]);
     		}
-    	JFrame paredes = new JFrame("Galpon");
+		
+		positionNumber = new JLabel("Posicion de la grua: ", SwingConstants.LEFT);
+		JSplitPane general = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		general.setBottomComponent(deposito);
+		general.setTopComponent(positionNumber);
+
+		
+    	JFrame paredes = new JFrame("Deposito");
     	paredes.setSize(new Dimension(1000, 800));
-    	paredes.getContentPane().add(deposito, BorderLayout.CENTER);
+    	paredes.getContentPane().add(general, BorderLayout.CENTER);
     	updateMatriz(filas,columnas);
         paredes.pack();
         paredes.setVisible(true);
@@ -238,7 +246,10 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 			for (int j=0; j<columnas; j++)
 			{
 				if (matriz[i][j]==1)
-					posiciones[i][j].setBackground(new Color(255,255,255));
+					{
+						posiciones[i][j].setBackground(new Color(255,255,255));
+						positionNumber.setText("Posicion de la grua: " + "Fila: " + i + ", Columna: " + j);
+					}
 				else 
 					posiciones[i][j].setBackground(new Color(90,58,7));			
 			}
