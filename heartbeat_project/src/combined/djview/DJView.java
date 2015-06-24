@@ -67,7 +67,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     		{
     			//JButton hola = new JButton(".");
     			posiciones[i][j]=new JPanel(new GridLayout(1,1));
-    			posiciones[i][j].setBackground(Color.BLACK);
+    			posiciones[i][j].setBackground(new Color(90,58,7));
     			//posiciones[i][j].add(hola);
     			deposito.add(posiciones[i][j]);
     		}
@@ -221,9 +221,9 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 			for (int j=0; j<columnas; j++)
 			{
 				if (matriz[i][j]==1)
-					posiciones[i][j].setBackground(Color.RED);
+					posiciones[i][j].setBackground(new Color(255,255,255));
 				else 
-					posiciones[i][j].setBackground(Color.BLACK);			
+					posiciones[i][j].setBackground(new Color(90,58,7));			
 			}
 		
 	}

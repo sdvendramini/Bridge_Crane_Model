@@ -71,7 +71,6 @@ public class HeartModel implements HeartModelInterface, Runnable
 						time += change;
 						notifyBeatObservers();
 					}
-					System.out.println(time);
 					time2 = time;
 				}
 			} catch (Exception e) {}
