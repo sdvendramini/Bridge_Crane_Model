@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class DJView implements ActionListener,  BeatObserver, BPMObserver {
+public class DJView implements ActionListener,  BeatObserver, BPMObserver, MatrizObserver {
 	BeatModelInterface model;
 	ControllerInterface controller;
     JFrame viewFrame;
@@ -15,6 +15,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     JFrame controlFrame;
     JPanel controlPanel;
     JLabel bpmLabel;
+    JPanel[][] posiciones;
     JTextField bpmTextField;
     JButton setBPMButton;
     JButton increaseBPMButton;
@@ -58,17 +59,21 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     	int columnas=8;
     	
     	JFrame.setDefaultLookAndFeelDecorated(true);
-    	JPanel[][] galpon= new JPanel[filas][columnas]; 
-		JPanel	contenedor= new JPanel(new GridLayout(filas,columnas));
+    	posiciones = new JPanel[filas][columnas]; 
+		JPanel	deposito = new JPanel(new GridLayout(filas,columnas));
 		for(int i=0;i<filas;i++)
     		for(int j=0;j<columnas;j++)
     		{
-    			galpon[i][j]=new JPanel(new GridLayout(1,1));
-    			galpon[i][j].setBackground(Color.BLACK);
-    			contenedor.add(galpon[i][j]);
+    			JButton hola = new JButton(".");
+    			posiciones[i][j]=new JPanel(new GridLayout(1,1));
+    			posiciones[i][j].setBackground(Color.BLACK);
+    			posiciones[i][j].add(hola);
+    			deposito.add(posiciones[i][j]);
     		}
     	JFrame paredes = new JFrame("Galpon");
-    	paredes.getContentPane().add(contenedor, BorderLayout.CENTER);
+    	paredes.setSize(new Dimension(1000, 800));
+    	paredes.getContentPane().add(deposito, BorderLayout.CENTER);
+    	updateMatriz(filas,columnas);
         paredes.pack();
         paredes.setVisible(true);
     }
@@ -199,5 +204,23 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 		if (beatBar != null) {
 			 beatBar.setValue(100);
 		}
+	}
+	
+	public void updateMatriz(int filas, int columnas){
+		int [][] matriz = new int[filas][columnas];
+		
+		BridgeCraneAdapter m = (BridgeCraneAdapter) model;
+		matriz = m.getMatriz();
+		
+		
+		for (int i=0; i<filas; i++)
+			for (int j=0; j<columnas; j++)
+			{
+				if (matriz[i][j]==1)
+					posiciones[i][j].setBackground(Color.RED);
+				else 
+					posiciones[i][j].setBackground(Color.BLACK);			
+			}
+		
 	}
 }

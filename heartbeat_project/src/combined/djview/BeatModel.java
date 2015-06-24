@@ -160,4 +160,9 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		}
         return event;
     }
+
+	public int[][] getMatriz() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
