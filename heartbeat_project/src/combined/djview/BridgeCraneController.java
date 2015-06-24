@@ -46,7 +46,6 @@ public class BridgeCraneController implements ControllerInterface{
  			model.setBPM(-20);
  			else
  				model.setBPM(-10);
- 		}
-	
+ 		}	
  	}
 }

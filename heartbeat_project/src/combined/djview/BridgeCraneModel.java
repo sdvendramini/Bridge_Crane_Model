@@ -172,7 +172,6 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	public void setBPM(int i) 
 	{
 		bpm = i;
-		notifyBPMObservers();
 	}
 
 	public int getBPM() {
