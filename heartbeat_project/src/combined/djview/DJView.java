@@ -52,6 +52,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         viewFrame.getContentPane().add(viewPanel, BorderLayout.CENTER);
         viewFrame.pack();
         viewFrame.setVisible(true);
+        
+        viewFrame.setLocation(150,300);
 	}
   
     public void createView2()
@@ -158,6 +160,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 
         controlFrame.pack();
         controlFrame.setVisible(true);
+        
+        controlFrame.setLocation(150,362);
     }
 
 	public void enableStopMenuItem() {
