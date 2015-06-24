@@ -198,6 +198,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 
 	public void updateBPM() {
 		
+		
 		if (model != null) {
 			int bpm = model.getBPM();
 			if (bpm == 0) {
@@ -208,17 +209,17 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Disponible");
 				}				
-			}else if(bpm == -20){
+			} else if(bpm == -20){
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Cargando");
-				}else{
+				}
+			} else{
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Current BPM: " + model.getBPM());
 					}
 				}
 			}
 		}
-	}
 
     
 	public void updateBeat() {

@@ -138,7 +138,6 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 				matriz[i][j]=0;			
 			}
 		matriz[a][b] = 1;
-		System.out.println(a + "  " + b );
 	}
 	
 	public void irDerecha()
