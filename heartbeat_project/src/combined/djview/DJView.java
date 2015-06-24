@@ -81,6 +81,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         paredes.setVisible(true);
         paredes.setLocation(300,300);
         paredes.setSize(500, 500);
+        paredes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public void createControls() {
