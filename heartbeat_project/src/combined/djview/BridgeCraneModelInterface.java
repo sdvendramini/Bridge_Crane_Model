@@ -13,9 +13,7 @@ public interface BridgeCraneModelInterface {
 	
 	int [][] getMatriz();
 
-	
-	//no van creo
-	void increaseBar();
-	void decreaseBar();
+	void setBPM(int i);
+	int getBPM();
 	
 }

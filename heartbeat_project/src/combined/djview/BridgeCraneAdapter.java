@@ -13,9 +13,9 @@ public class BridgeCraneAdapter implements BeatModelInterface {
 
 	public void off() {}
 
-	public void setBPM(int bpm) {}
-
-	public int getBPM() {return 0;}
+	public int getBPM() {
+		return bridgeCrane.getBPM();
+	}
 
 	public void registerObserver(BeatObserver o) {
 		bridgeCrane.registerObserver(o);
@@ -44,6 +44,12 @@ public class BridgeCraneAdapter implements BeatModelInterface {
 	
 	public int[][] getMatriz(){
 		return bridgeCrane.getMatriz();
+	}
+
+	public void setBPM(int bpm) 
+	{
+		bridgeCrane.setBPM(bpm);
+		
 	}
 
 }

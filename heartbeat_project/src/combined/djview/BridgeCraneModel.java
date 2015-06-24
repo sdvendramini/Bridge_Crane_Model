@@ -8,11 +8,13 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	ArrayList beatObservers = new ArrayList();
 	ArrayList bpmObservers = new ArrayList();
 	ArrayList matrizObservers= new ArrayList();
+	int bpm = -10;
 	int [][] matriz;
 	int filas=8;
 	int columnas=8;
 	int a;
 	int b;
+	int contador = 10;
 	Thread thread;
 
 	public BridgeCraneModel () {
@@ -24,19 +26,32 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 
 	public void run()
 	{
+
 		for(;;)
 		{
 			try
 			{
+				notifyBPMObservers();
 				notifyMatrizObserver();
+				
 			}
 			catch(NullPointerException e){};
 
 			try
 			{
 				Thread.sleep(50);
+				contador--;
 			}
 			catch(Exception e){};
+			
+			if(contador == 0)
+			{
+				if(bpm == -20)
+				 {
+						notifyBeatObservers();
+				 }
+				contador = 10;
+			}
 		}
 	}
 	
@@ -96,15 +111,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		for(int i = 0; i < matrizObservers.size(); i++) {
 			MatrizObserver observer = (MatrizObserver)matrizObservers.get(i);
 			observer.updateMatriz(filas,columnas);
+			
 		}
-	}
-	
-	public void increaseBar(){
-		
-	}
-
-	public void decreaseBar(){
-
 	}
 	
 	public void inicializarMatriz(){
@@ -159,6 +167,16 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		if(a!=7)
 			a++;
 		cambiarMatriz();
+	}
+
+	public void setBPM(int i) 
+	{
+		bpm = i;
+		notifyBPMObservers();
+	}
+
+	public int getBPM() {
+		return bpm;
 	}
 
 }

@@ -29,17 +29,6 @@ public class BridgeCraneController implements ControllerInterface{
 		((BridgeCraneModel) model).irIzquierda();
 	}
   
- 	public void setBPM(int bpm) {
- 		//si no se puede apretar set sin escribir nada le metemos un codigo de seguridad
- 		if(upOrDown){
- 			model.increaseBar();
- 			upOrDown=false;
- 		}
- 		else{
- 			model.decreaseBar();
- 			upOrDown=true;
- 		}
- 	}
  	
  	public void up() {
  		((BridgeCraneModel) model).irArriba();
@@ -47,5 +36,17 @@ public class BridgeCraneController implements ControllerInterface{
  	
  	public void down() {
  		((BridgeCraneModel) model).irAbajo();
+ 	}
+
+
+ 	public void setBPM(int bpm) {
+ 		if(bpm==1234)
+ 		{ 	
+ 			if(model.getBPM() == -10)
+ 			model.setBPM(-20);
+ 			else
+ 				model.setBPM(-10);
+ 		}
+	
  	}
 }
