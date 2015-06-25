@@ -35,4 +35,18 @@ public class HeartAdapter implements BeatModelInterface {
 	public void removeObserver(BPMObserver o) {
 		heart.removeObserver(o);
 	}
+	
+	public int[][] getMatriz(){ 
+		return null;
+	}
+
+	public void registerObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
+	}
 }

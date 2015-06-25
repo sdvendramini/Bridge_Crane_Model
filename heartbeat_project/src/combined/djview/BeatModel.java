@@ -1,6 +1,7 @@
 package combined.djview;
   
 import javax.sound.midi.*;
+
 import java.util.*;
 
 public class BeatModel implements BeatModelInterface, MetaEventListener {
@@ -160,4 +161,19 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		}
         return event;
     }
+
+	public int[][] getMatriz() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void registerObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
+	}
 }

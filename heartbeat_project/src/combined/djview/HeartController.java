@@ -13,7 +13,8 @@ public class HeartController implements ControllerInterface {
 		view.disableStartMenuItem();
 	}
   
-	public void start() {}
+	public void start() {
+	}
  
 	public void stop() {}
     
@@ -25,6 +26,11 @@ public class HeartController implements ControllerInterface {
 	public void decreaseBPM() {}
   
  	public void setBPM(int bpm) {}
+
+	public void up() {}
+
+	public void down() {}
+
 }
 
 

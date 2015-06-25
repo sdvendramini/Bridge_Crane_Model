@@ -7,4 +7,5 @@ public interface HeartModelInterface {
 	void removeObserver(BeatObserver o);
 	void registerObserver(BPMObserver o);
 	void removeObserver(BPMObserver o);
+	
 }
