@@ -14,7 +14,8 @@ public class HeartAdapter implements BeatModelInterface {
     public void off() {}
    
 	public int getBPM() {
-		return heart.getHeartRate();
+		//return heart.getHeartRate();
+		return heart.getCuenta();
 	}
   
     public void setBPM(int bpm) {}
@@ -33,5 +34,19 @@ public class HeartAdapter implements BeatModelInterface {
   
 	public void removeObserver(BPMObserver o) {
 		heart.removeObserver(o);
+	}
+	
+	public int[][] getMatriz(){ 
+		return null;
+	}
+
+	public void registerObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeObserver(MatrizObserver o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

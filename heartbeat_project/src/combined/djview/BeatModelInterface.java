@@ -18,4 +18,10 @@ public interface BeatModelInterface {
 	void registerObserver(BPMObserver o);
   
 	void removeObserver(BPMObserver o);
+	
+	void registerObserver(MatrizObserver o);
+	
+	void removeObserver(MatrizObserver o);
+
+	int[][] getMatriz();
 }
