@@ -62,9 +62,9 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         
         if(type==3)
         	viewFrame.setLocation(148,200);
-            else if(type==2)
+        else if(type==2)
             viewFrame.setLocation(925,200);	
-            else if(type==1)
+        else if(type==1)
             viewFrame.setLocation(1198,200);	
 	}
   

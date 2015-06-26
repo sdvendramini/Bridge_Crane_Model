@@ -17,7 +17,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	int contador = 10;
 	Thread thread;
 
-	public BridgeCraneModel () {
+	public BridgeCraneModel () 
+	{
 		matriz = new int [filas][columnas];
 		inicializarMatriz();
 		thread =new Thread (this);
@@ -62,7 +63,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	}
 	
 	
-	public int[][] getMatriz(){
+	public int[][] getMatriz()
+	{
 		return matriz;
 	}
 	
