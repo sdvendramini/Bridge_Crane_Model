@@ -18,14 +18,20 @@ public class ExchangeDJView extends DJView
         JMenuBar select = createMenu();
         viewFrame.setJMenuBar(select);
         viewFrame.pack();
-        viewFrame.setLocation(148,200);
+        viewFrame.setLocation(148+300,200);
 
 	}
+    
+    public void createView2()
+    {
+    	super.createView2();
+    	paredes.setLocation(310+300,200);
+    }
     
     public void createControls()
     {
     	super.createControls();
-    	controlFrame.setLocation(150,292);
+    	controlFrame.setLocation(150+300,292);
     }
 	
 	public JMenuBar createMenu()
@@ -44,17 +50,18 @@ public class ExchangeDJView extends DJView
             {
 				if(type!=1)
 				{
-					JFrame b = getBar();
-					JFrame c = getControl();
-					b.setVisible(false);
-					c.setVisible(false);
 					if(type == 3)
 					{
 						JFrame p = getGalpon();
 						p.setVisible(false);
-					}					
+					}	
+					ExchangeModel(1);
+					JFrame b = getBar();
+					JFrame c = getControl();
+					b.setVisible(false);
+					c.setVisible(false);
 					model.off();
-					ExchangeModel(1);					
+										
 				}
             }
         });
@@ -70,17 +77,18 @@ public class ExchangeDJView extends DJView
 			{
 				if(type!=2)
 				{
-					JFrame b = getBar();
-					JFrame c = getControl();
-					b.setVisible(false);
-					c.setVisible(false);
 					if(type == 3)
 					{
 						JFrame p = getGalpon();
 						p.setVisible(false);
-					}					
-					model.off();
+					}	
 					ExchangeModel(2);
+					JFrame b = getBar();
+					JFrame c = getControl();
+					b.setVisible(false);
+					c.setVisible(false);									
+					model.off();
+					
 			        
 				}
             }
@@ -97,13 +105,13 @@ public class ExchangeDJView extends DJView
 			{
 				if(type!=3)
 				{
+					ExchangeModel(3);
 					JFrame b = getBar();
 					JFrame c = getControl();
 					b.setVisible(false);
 					c.setVisible(false);
 					model.off();
-					ExchangeModel(3);
-				}
+									}
             }
         });
         

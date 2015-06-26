@@ -1,8 +1,9 @@
 package combined.djview;
 
-public class ExchangeTestDrive {
+public class ExchangableTestDrive {
 
-	public static void main (String[] args) {
+	public static void main (String[] args) 
+	{
 		BridgeCraneModel bridgeCraneModel = new BridgeCraneModel();
         ControllerInterface model = new BridgeCraneController(bridgeCraneModel,true);
 	}
