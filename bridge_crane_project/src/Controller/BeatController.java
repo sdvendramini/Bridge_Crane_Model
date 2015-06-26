@@ -77,7 +77,7 @@ public class BeatController implements ControllerInterface {
   	}
   
  	public void setBPM(int bpm) {
- 		if(bpm>0)	//agregado
+ 		if(bpm>=0)	//agregado
 		model.setBPM(bpm);
 	}
  	

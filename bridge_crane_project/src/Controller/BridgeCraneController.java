@@ -10,7 +10,6 @@ public class BridgeCraneController implements ControllerInterface{
 	BridgeCraneModelInterface model;
 	DJView view;
 	ExchangeDJView exchangeView;
-	boolean upOrDown;	
 
 	public BridgeCraneController(BridgeCraneModelInterface model,boolean tipo)
 	{
@@ -68,9 +67,4 @@ public class BridgeCraneController implements ControllerInterface{
  				model.setBPM(-10);
  		}	
  	}
-
-	public void runModel() {
-		// TODO Auto-generated method stub
-		
-	}
 }

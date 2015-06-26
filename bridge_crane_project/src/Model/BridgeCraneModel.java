@@ -189,5 +189,15 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	public int getBPM() {
 		return bpm;
 	}
+	
+	public int getFilaActual()
+	{
+		return a;
+	}
+	
+	public int getColumnaActual()
+	{
+		return b;
+	}
 
 }
