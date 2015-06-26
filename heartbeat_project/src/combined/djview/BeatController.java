@@ -3,27 +3,61 @@ package combined.djview;
 public class BeatController implements ControllerInterface {
 	BeatModelInterface model;
 	DJView view;
+	ExchangeDJView exchangeView;
+	boolean tipo;
    
-	public BeatController(BeatModelInterface model) {
+	public BeatController(BeatModelInterface model, boolean tipo) {
 		this.model = model;
-		view = new DJView(this, model);
-        view.createView();
-        view.createControls();
-		view.disableStopMenuItem();
-		view.enableStartMenuItem();
+		this.tipo = tipo;
+		
+		if(tipo == false)
+		{
+			view = new DJView(this, model);
+	        view.createView();
+	        view.createControls();
+			view.disableStopMenuItem();
+			view.enableStartMenuItem();
+		}
+		else
+		{
+			exchangeView = new ExchangeDJView(this, model);
+			exchangeView.createView();
+			exchangeView.createControls();
+			exchangeView.disableStopMenuItem();
+			exchangeView.enableStartMenuItem();
+		}
+		
 		model.initialize();
 	}
   
 	public void start() {
 		model.on();
-		view.disableStartMenuItem();
-		view.enableStopMenuItem();
+		if(tipo == false)
+		{
+			view.disableStartMenuItem();
+			view.enableStopMenuItem();	
+		}
+		else
+		{
+			exchangeView.disableStartMenuItem();
+			exchangeView.enableStopMenuItem();
+		}
+		
 	}
   
 	public void stop() {
 		model.off();
-		view.disableStopMenuItem();
-		view.enableStartMenuItem();
+		if(tipo == false)
+		{
+			view.disableStopMenuItem();
+			view.enableStartMenuItem();
+		}
+		else
+		{
+			exchangeView.disableStopMenuItem();
+			exchangeView.enableStartMenuItem();
+		}
+		
 	}
     
 	public void increaseBPM() {

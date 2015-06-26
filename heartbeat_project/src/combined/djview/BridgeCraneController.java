@@ -1,20 +1,34 @@
 package combined.djview;
 
 public class BridgeCraneController implements ControllerInterface{
-	BridgeCraneModelInterface model;				
+	BridgeCraneModelInterface model;
 	DJView view;
+	ExchangeDJView exchangeView;
 	boolean upOrDown;	
 
-	public BridgeCraneController(BridgeCraneModelInterface model)
+	public BridgeCraneController(BridgeCraneModelInterface model,boolean tipo)
 	{
 		this.model=model;
-		view = new DJView(this, new BridgeCraneAdapter(model));
-        view.createView();
-        view.createControls();
-		view.disableStopMenuItem();
-		view.disableStartMenuItem();
-		view.createView2();
-		upOrDown=false;
+		
+		if(tipo == false)
+		{
+			view = new DJView(this, new BridgeCraneAdapter(model));
+			view.createView();		
+			view.createControls();
+			view.disableStopMenuItem();
+			view.disableStartMenuItem();
+			view.createView2();
+		}
+		else
+		{
+			exchangeView = new ExchangeDJView(this, new BridgeCraneAdapter(model));
+			exchangeView.createView();		
+			exchangeView.createControls();
+			exchangeView.disableStopMenuItem();
+			exchangeView.disableStartMenuItem();
+			exchangeView.createView2();
+		}
+        
 	}													//la implementacion de los metodos va a depender del modelo
   
 	public void start() {}

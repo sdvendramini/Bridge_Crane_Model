@@ -3,14 +3,28 @@ package combined.djview;
 public class HeartController implements ControllerInterface {
 	HeartModelInterface model;
 	DJView view;
+	ExchangeDJView exchangeView;
   
-	public HeartController(HeartModelInterface model) {
+	public HeartController(HeartModelInterface model, boolean tipo) {
 		this.model = model;
-		view = new DJView(this, new HeartAdapter(model));
-        view.createView();
-        view.createControls();
-		view.disableStopMenuItem();
-		view.disableStartMenuItem();
+		
+		if(tipo == false)
+		{
+			view = new DJView(this, new HeartAdapter(model));
+			view.createView();
+			view.createControls();
+			view.disableStopMenuItem();
+			view.disableStartMenuItem();	
+		}
+		else
+		{
+			exchangeView = new ExchangeDJView(this, new HeartAdapter(model));
+			exchangeView.createView();
+			exchangeView.createControls();
+			exchangeView.disableStopMenuItem();
+			exchangeView.disableStartMenuItem();
+		}
+		
 	}
   
 	public void start() {

@@ -23,11 +23,11 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     JButton upBPMButton;
     JButton downBPMButton;
     JMenuBar menuBar;
-    JFrame paredes;
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
     JLabel positionNumber;
+    JFrame paredes;
     int type;
     
     public DJView(ControllerInterface controller, BeatModelInterface model) {	
@@ -45,12 +45,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		// Create all Swing components here
     	JFrame.setDefaultLookAndFeelDecorated(false);
     	viewPanel = new JPanel(new GridLayout(1, 2));
-        viewFrame = new JFrame("View");
-        
-        JMenuBar select = createMenu();
-        viewFrame.setJMenuBar(select);
-        
-        
+        viewFrame = new JFrame("View");              
         viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         viewFrame.setSize(new Dimension(100, 80));
         bpmOutputLabel = new JLabel("offline", SwingConstants.CENTER);
@@ -185,11 +180,11 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         controlFrame.setVisible(true);
         
         if(type==3)
-        controlFrame.setLocation(150,290);
+        controlFrame.setLocation(150,269);
         else if(type==2)
-        controlFrame.setLocation(927,290);	
+        controlFrame.setLocation(927,269);	
         else if(type==1)
-        controlFrame.setLocation(1200,290);	
+        controlFrame.setLocation(1200,269);	
     }
 
 	public void enableStopMenuItem() {
@@ -298,87 +293,5 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		}
 		catch(ClassCastException t) {}
 		
-	}
-	
-	public JMenuBar createMenu()
-	{
-        JMenuBar select = new JMenuBar();
-        JMenu menuSelect = new JMenu("Model");
-        
-        JMenuItem model1 = new JMenuItem("DJ");
-        menuSelect.add(model1);       
-        model1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) 
-            {
-				if(type!=1)
-				{
-					ExchangableTestDrive e = new ExchangableTestDrive(1);
-					JFrame b = getBar();
-					JFrame c = getControl();
-					JFrame p = getGalpon();
-					b.setVisible(false);
-					c.setVisible(false);
-					p.setVisible(false);
-					model.off();
-					
-				}
-            }
-        });
-        
-        JMenuItem model2 = new JMenuItem("Heart");
-        menuSelect.add(model2);      
-        model2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) 
-			{
-				if(type!=2)
-				{
-					ExchangableTestDrive e = new ExchangableTestDrive(2);
-					JFrame b = getBar();
-					JFrame c = getControl();
-					JFrame p = getGalpon();
-					b.setVisible(false);
-					c.setVisible(false);
-					p.setVisible(false);
-					model.off();
-			        
-				}
-            }
-        });
-        
-        JMenuItem model3 = new JMenuItem("BridgeCrane");
-        menuSelect.add(model3);
-        model3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) 
-			{
-				if(type!=3)
-				{
-					ExchangableTestDrive e = new ExchangableTestDrive(3);
-					JFrame b = getBar();
-					JFrame c = getControl();
-					b.setVisible(false);
-					c.setVisible(false);
-					model.off();
-				}
-            }
-        });
-        
-        select.add(menuSelect);
-        
-        return select;
-	}
-	
-	public JFrame getBar()
-	{
-		return viewFrame;
-	}
-	
-	public JFrame getControl()
-	{
-		return controlFrame;
-	}
-	
-	public JFrame getGalpon()
-	{
-		return paredes;
 	}
 }
