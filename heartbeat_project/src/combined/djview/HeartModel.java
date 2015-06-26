@@ -29,6 +29,14 @@ public class HeartModel implements HeartModelInterface, Runnable
 		return singleton;
 	}
 	
+	public void clear()
+	{
+		beatObservers.clear();
+		System.out.println(beatObservers.size());
+		bpmObservers.clear();
+		System.out.println(bpmObservers.size());
+	}
+	
 	public void run() {
 			for(;;) {
 			notifyBPMObservers();

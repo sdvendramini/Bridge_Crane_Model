@@ -52,5 +52,11 @@ public class BridgeCraneAdapter implements BeatModelInterface {
 		
 	}
 
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 

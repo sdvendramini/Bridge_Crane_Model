@@ -176,4 +176,12 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void clear()
+	{
+		beatObservers.clear();
+		bpmObservers.clear();
+	}
+	
 }

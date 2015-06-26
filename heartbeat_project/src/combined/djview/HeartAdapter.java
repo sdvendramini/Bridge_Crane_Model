@@ -49,4 +49,9 @@ public class HeartAdapter implements BeatModelInterface {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void clear()
+	{
+		heart.clear();
+	}
 }

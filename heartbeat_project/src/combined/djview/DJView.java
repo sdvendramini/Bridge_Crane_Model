@@ -23,6 +23,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     JButton upBPMButton;
     JButton downBPMButton;
     JMenuBar menuBar;
+    JFrame paredes;
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
@@ -46,37 +47,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     	viewPanel = new JPanel(new GridLayout(1, 2));
         viewFrame = new JFrame("View");
         
-        JMenuBar select = new JMenuBar();
-        JMenu menuSelect = new JMenu("Model");
-        
-        JMenuItem model1 = new JMenuItem("DJ");
-        menuSelect.add(model1);       
-        model1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) 
-            {
-
-            }
-        });
-        
-        JMenuItem model2 = new JMenuItem("Heart");
-        menuSelect.add(model2);      
-        model2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-
-   
-            }
-        });
-        
-        JMenuItem model3 = new JMenuItem("BridgeCrane");
-        menuSelect.add(model3);
-        model3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				System.out.println("a");
-            }
-        });
-        
-        select.add(menuSelect);
-        
+        JMenuBar select = createMenu();
         viewFrame.setJMenuBar(select);
         
         
@@ -124,7 +95,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		general.setTopComponent(positionNumber);
 
 		
-    	JFrame paredes = new JFrame("Deposito");
+    	paredes = new JFrame("Deposito");
     	paredes.setSize(new Dimension(1000, 800));
     	paredes.getContentPane().add(general, BorderLayout.CENTER);
     	updateMatriz(filas,columnas);
@@ -327,8 +298,87 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		}
 		catch(ClassCastException t) {}
 		
-		System.out.println(type);
 	}
 	
+	public JMenuBar createMenu()
+	{
+        JMenuBar select = new JMenuBar();
+        JMenu menuSelect = new JMenu("Model");
+        
+        JMenuItem model1 = new JMenuItem("DJ");
+        menuSelect.add(model1);       
+        model1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) 
+            {
+				if(type!=1)
+				{
+					ExchangableTestDrive e = new ExchangableTestDrive(1);
+					JFrame b = getBar();
+					JFrame c = getControl();
+					JFrame p = getGalpon();
+					b.setVisible(false);
+					c.setVisible(false);
+					p.setVisible(false);
+					model.off();
+					
+				}
+            }
+        });
+        
+        JMenuItem model2 = new JMenuItem("Heart");
+        menuSelect.add(model2);      
+        model2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) 
+			{
+				if(type!=2)
+				{
+					ExchangableTestDrive e = new ExchangableTestDrive(2);
+					JFrame b = getBar();
+					JFrame c = getControl();
+					JFrame p = getGalpon();
+					b.setVisible(false);
+					c.setVisible(false);
+					p.setVisible(false);
+					model.off();
+			        
+				}
+            }
+        });
+        
+        JMenuItem model3 = new JMenuItem("BridgeCrane");
+        menuSelect.add(model3);
+        model3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) 
+			{
+				if(type!=3)
+				{
+					ExchangableTestDrive e = new ExchangableTestDrive(3);
+					JFrame b = getBar();
+					JFrame c = getControl();
+					b.setVisible(false);
+					c.setVisible(false);
+					model.off();
+				}
+            }
+        });
+        
+        select.add(menuSelect);
+        
+        return select;
+	}
 	
+	public JFrame getBar()
+	{
+		return viewFrame;
+	}
+	
+	public JFrame getControl()
+	{
+		return controlFrame;
+	}
+	
+	public JFrame getGalpon()
+	{
+		return paredes;
+	}
 }

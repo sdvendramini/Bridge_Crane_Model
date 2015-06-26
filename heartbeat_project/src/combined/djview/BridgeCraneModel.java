@@ -55,6 +55,13 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		}
 	}
 	
+	public void clear()
+	{
+		beatObservers.clear();
+		bpmObservers.clear();
+	}
+	
+	
 	public int[][] getMatriz(){
 		return matriz;
 	}

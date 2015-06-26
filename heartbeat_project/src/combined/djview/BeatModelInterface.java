@@ -24,4 +24,6 @@ public interface BeatModelInterface {
 	void removeObserver(MatrizObserver o);
 
 	int[][] getMatriz();
+	
+	void clear();
 }
