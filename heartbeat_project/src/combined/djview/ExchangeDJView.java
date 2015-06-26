@@ -386,8 +386,8 @@ public class ExchangeDJView implements ActionListener,  BeatObserver, BPMObserve
 		}
 		else if(a==2)
 		{
-			HeartModel heartModel = new HeartModel();
-	        ControllerInterface c2 = new HeartController(heartModel,true);
+			HeartModel heartModel1 = HeartModel.getInstance();
+	        ControllerInterface c2 = new HeartController(heartModel1,true);
 		}
 		else if(a==3)
 		{
