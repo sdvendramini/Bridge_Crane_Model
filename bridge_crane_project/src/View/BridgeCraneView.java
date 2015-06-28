@@ -24,8 +24,9 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
     public BridgeCraneView(ControllerInterface controller, BeatModelInterface model) {	
 		
     	super(controller,model);
-    	model.registerObserver((MatrizObserver)this);	
     	verificar();
+    	if(type == 3)
+    	model.registerObserver((MatrizObserver)this);	
     }
     
     public void createView() {
