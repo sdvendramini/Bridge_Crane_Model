@@ -10,8 +10,8 @@ public class HeartModel implements HeartModelInterface, Runnable
 	private static HeartModel singleton;
 	private static int cuenta;
 	
-	ArrayList beatObservers = new ArrayList();
-	ArrayList bpmObservers = new ArrayList();
+	ArrayList<BeatObserver> beatObservers = new ArrayList<BeatObserver>();
+	ArrayList<BPMObserver> bpmObservers = new ArrayList<BPMObserver>();
 	int time = 1000;
 	int time2 = 1000;
     int bpm = 90;
