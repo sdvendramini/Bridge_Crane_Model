@@ -136,10 +136,8 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		
 		int c=random.nextInt(8);
 		int d=random.nextInt(8);
-		
 		int e=random.nextInt(8);
 		int f=random.nextInt(8);
-		
 		int g=random.nextInt(8);
 		int h=random.nextInt(8);
 		
@@ -151,6 +149,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 				else 
 					matriz[i][j]=0;				
 			}
+		
 		matriz[c][d] = 2;
 		matriz[e][f] = 2;
 		matriz[g][h] = 2;
@@ -171,7 +170,7 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 				else if(matriz[i][j] == 4 && (i!=a || j!=b))
 				{
 					matriz[i][j] = 0;
-					matriz[a][b] = 4; /////
+					matriz[a][b] = 4;
 				}
 			}
 		
