@@ -2,7 +2,11 @@ package View;
     
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Controller.BeatController;
@@ -69,7 +73,7 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
     		for(int j=0;j<columnas;j++)
     		{
     			posiciones[i][j]=new JPanel(new GridLayout(1,1));
-    			posiciones[i][j].setBackground(new Color(90,58,7));
+    			posiciones[i][j].setBackground(Color.GRAY);
     			deposito.add(posiciones[i][j]);
     		}
 		
@@ -207,7 +211,6 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 	
 	public void updateMatriz(int filas, int columnas){
 		int [][] matriz = new int[filas][columnas];
-		
 		BridgeCraneAdapter m = (BridgeCraneAdapter) model;
 		matriz = m.getMatriz();
 		
@@ -219,8 +222,20 @@ public class BridgeCraneView extends DJView implements MatrizObserver {
 						posiciones[i][j].setBackground(new Color(255,255,255));
 						positionNumber.setText("Posicion de la grua: " + "Fila: " + i + ", Columna: " + j);
 					}
+				else if (matriz[i][j] == 2)
+				{
+					posiciones[i][j].setBackground(new Color(90,58,7));
+				}
+				else if (matriz[i][j] == 3)
+				{
+					posiciones[i][j].setBackground(Color.RED);
+				}
+				else if (matriz[i][j] == 4)
+				{
+					posiciones[i][j].setBackground(Color.GREEN);
+				}
 				else 
-					posiciones[i][j].setBackground(new Color(90,58,7));			
+					posiciones[i][j].setBackground(Color.GRAY);			
 			}	
 	}
 	

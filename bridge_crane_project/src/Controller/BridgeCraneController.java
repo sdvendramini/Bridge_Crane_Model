@@ -1,5 +1,7 @@
 package Controller;
 
+import javax.swing.JOptionPane;
+
 import Model.BridgeCraneAdapter;
 import Model.BridgeCraneModel;
 import Model.BridgeCraneModelInterface;
@@ -64,7 +66,11 @@ public class BridgeCraneController implements ControllerInterface{
  			if(model.getBPM() == -10)
  			model.setBPM(-20);
  			else
- 				model.setBPM(-10);
+ 			model.setBPM(-10);
  		}	
+ 		else
+ 		{
+ 			JOptionPane.showMessageDialog(null,"Contaseña incorrecta");
+ 		}
  	}
 }
