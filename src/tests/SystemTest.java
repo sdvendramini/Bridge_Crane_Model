@@ -92,6 +92,8 @@ public class SystemTest extends AssertJSwingTestngTestCase{
 		sleep();
 		buttonup.target().doClick(); 
 		sleep();
+		buttonup.target().doClick(); 
+		sleep();
 
 		JButtonFixture buttonset = controllerWindow.button(new GenericTypeMatcher<JButton>(JButton.class) {
 
