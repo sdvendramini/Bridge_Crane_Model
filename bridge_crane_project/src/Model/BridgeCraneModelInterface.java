@@ -6,8 +6,6 @@ import View.MatrizObserver;
 
 public interface BridgeCraneModelInterface {
 	
-	//faltan metodos q dependen del modelo
-	
 	void registerObserver(BeatObserver o);
 	void removeObserver(BeatObserver o);
 	void registerObserver(BPMObserver o);

@@ -14,7 +14,11 @@ public class BeatTest {
 	public void negativeSetTest() 
 	{
 		BeatModelInterface model = new BeatModel();
+<<<<<<< HEAD
 		BeatController controller = new BeatController(model,false);		
+=======
+		BeatController controller = new BeatController(model,1);		
+>>>>>>> origin/Third
 		int inicial = model.getBPM();
 		controller.setBPM(-15);
 		int fin = model.getBPM();		
@@ -25,7 +29,11 @@ public class BeatTest {
 	public void negativeDecreaseTest() 
 	{
 		BeatModelInterface model = new BeatModel();
+<<<<<<< HEAD
 		BeatController controller = new BeatController(model,false);		
+=======
+		BeatController controller = new BeatController(model,1);		
+>>>>>>> origin/Third
 		controller.setBPM(0);
 		controller.decreaseBPM();	
 		assertEquals(0,model.getBPM());	

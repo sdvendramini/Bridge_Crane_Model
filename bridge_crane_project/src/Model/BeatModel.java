@@ -10,8 +10,8 @@ import java.util.*;
 
 public class BeatModel implements BeatModelInterface, MetaEventListener {
     Sequencer sequencer;
-	ArrayList beatObservers = new ArrayList();
-	ArrayList bpmObservers = new ArrayList();
+	ArrayList<BeatObserver> beatObservers = new ArrayList<BeatObserver>();
+	ArrayList<BPMObserver> bpmObservers = new ArrayList<BPMObserver>();
     int bpm = 90;
     Sequence sequence;
     Track track;
@@ -166,19 +166,25 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
         return event;
     }
 
-	public int[][] getMatriz() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	@Override
 	public void registerObserver(MatrizObserver o) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void removeObserver(MatrizObserver o) {
 		// TODO Auto-generated method stub
 		
 	}
+<<<<<<< HEAD:bridge_crane_project/src/Model/BeatModel.java
 	
+=======
+
+	@Override
+	public int[][] getMatriz() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/BeatModel.java
 }

@@ -13,7 +13,11 @@ public class PasswordTest {
 	public void rightPassWordTest() 
 	{
 		BridgeCraneModel model = new BridgeCraneModel();
+<<<<<<< HEAD
 		BridgeCraneController controller = new BridgeCraneController(model,false);
+=======
+		BridgeCraneController controller = new BridgeCraneController(model,1);
+>>>>>>> origin/Third
 		
 		int rightPassword = 1234;
 		int expected = -20;
@@ -27,7 +31,11 @@ public class PasswordTest {
 	public void wrongPasswordTest() 
 	{
 		BridgeCraneModel model = new BridgeCraneModel();
+<<<<<<< HEAD
 		BridgeCraneController controller = new BridgeCraneController(model,false);
+=======
+		BridgeCraneController controller = new BridgeCraneController(model,1);
+>>>>>>> origin/Third
 		
 		int wrongPassword = 5554;
 		int expected = -10;

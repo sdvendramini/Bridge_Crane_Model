@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
 import Controller.BeatController;
 import Controller.BridgeCraneController;
 import Controller.ControllerInterface;
@@ -13,6 +14,12 @@ import Model.BeatModelInterface;
 import Model.BridgeCraneAdapter;
 
 public class DJView implements ActionListener,  BeatObserver, BPMObserver, MatrizObserver {
+=======
+import Controller.ControllerInterface;
+import Model.BeatModelInterface;
+
+public class DJView implements ActionListener,  BeatObserver, BPMObserver {
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
 	BeatModelInterface model;
 	ControllerInterface controller;
     JFrame viewFrame;
@@ -22,37 +29,39 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
     JFrame controlFrame;
     JPanel controlPanel;
     JLabel bpmLabel;
-    JPanel[][] posiciones;
     JTextField bpmTextField;
     JButton setBPMButton;
     JButton increaseBPMButton;
     JButton decreaseBPMButton;
-    JButton upBPMButton;
-    JButton downBPMButton;
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem startMenuItem;
     JMenuItem stopMenuItem;
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
     JLabel positionNumber;
     JFrame paredes;
     int type;
     
+=======
+
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
     public DJView(ControllerInterface controller, BeatModelInterface model) {	
 		this.controller = controller;
 		this.model = model;
 		model.registerObserver((BeatObserver)this);
 		model.registerObserver((BPMObserver)this);
-		model.registerObserver((MatrizObserver)this);
-		
-		verificar();
-		
     }
     
     public void createView() {
 		// Create all Swing components here
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
     	JFrame.setDefaultLookAndFeelDecorated(false);
     	viewPanel = new JPanel(new GridLayout(1, 2));
         viewFrame = new JFrame("View");              
+=======
+        viewPanel = new JPanel(new GridLayout(1, 2));
+        viewFrame = new JFrame("View");
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
         viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         viewFrame.setSize(new Dimension(100, 80));
         bpmOutputLabel = new JLabel("offline", SwingConstants.CENTER);
@@ -65,8 +74,8 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         viewFrame.getContentPane().add(viewPanel, BorderLayout.CENTER);
         viewFrame.pack();
         viewFrame.setVisible(true);
-
         
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
         if(type==3)
         	viewFrame.setLocation(148,200);
         else if(type==2)
@@ -108,9 +117,15 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         paredes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
+=======
+        viewFrame.setLocation(148,200);	//Se agrega para mejorar la organizacion de las ventanas en pantalla.
+	}
+  
+  
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
     public void createControls() {
 		// Create all Swing components here
-        JFrame.setDefaultLookAndFeelDecorated(false);
+        JFrame.setDefaultLookAndFeelDecorated(true);
         controlFrame = new JFrame("Control");
         controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlFrame.setSize(new Dimension(100, 80));
@@ -119,32 +134,29 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 
         menuBar = new JMenuBar();
         menu = new JMenu("DJ Control");
-        
         startMenuItem = new JMenuItem("Start");
-        menu.add(startMenuItem);       
+        menu.add(startMenuItem);
         startMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 controller.start();
             }
         });
-        
         stopMenuItem = new JMenuItem("Stop");
-        menu.add(stopMenuItem);      
+        menu.add(stopMenuItem); 
         stopMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 controller.stop();
             }
         });
-        
         JMenuItem exit = new JMenuItem("Quit");
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 System.exit(0);
             }
         });
+
         menu.add(exit);
         menuBar.add(menu);
-        
         controlFrame.setJMenuBar(menuBar);
 
         bpmTextField = new JTextField(2);
@@ -153,28 +165,22 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
         setBPMButton.setSize(new Dimension(10,40));
         increaseBPMButton = new JButton(">>");
         decreaseBPMButton = new JButton("<<");
-        upBPMButton = new JButton("^");
-        downBPMButton = new JButton("v");
         setBPMButton.addActionListener(this);
         increaseBPMButton.addActionListener(this);
         decreaseBPMButton.addActionListener(this);
-        upBPMButton.addActionListener(this);
-        downBPMButton.addActionListener(this);
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
- 
+
 		buttonPanel.add(decreaseBPMButton);
 		buttonPanel.add(increaseBPMButton);
 
         JPanel enterPanel = new JPanel(new GridLayout(1, 2));
         enterPanel.add(bpmLabel);
         enterPanel.add(bpmTextField);
-        JPanel insideControlPanel = new JPanel(new GridLayout(5, 1));
+        JPanel insideControlPanel = new JPanel(new GridLayout(3, 1));
         insideControlPanel.add(enterPanel);
         insideControlPanel.add(setBPMButton);
-        insideControlPanel.add(upBPMButton);
         insideControlPanel.add(buttonPanel);
-        insideControlPanel.add(downBPMButton);
         controlPanel.add(insideControlPanel);
         
         bpmLabel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -182,16 +188,20 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 
         controlFrame.getRootPane().setDefaultButton(setBPMButton);
         controlFrame.getContentPane().add(controlPanel, BorderLayout.CENTER);
-
+        
         controlFrame.pack();
         controlFrame.setVisible(true);
         
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
         if(type==3)
         controlFrame.setLocation(150,269);
         else if(type==2)
         controlFrame.setLocation(927,269);	
         else if(type==1)
         controlFrame.setLocation(1200,269);	
+=======
+        controlFrame.setLocation(150,292); //Se agrega para mejorar la organizacion de las ventanas en pantalla.
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
     }
 
 	public void enableStopMenuItem() {
@@ -218,44 +228,30 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 			controller.increaseBPM();
 		} else if (event.getSource() == decreaseBPMButton) {
 			controller.decreaseBPM();
-		} else if (event.getSource() == upBPMButton) {
-			controller.up();
-		} else if (event.getSource() == downBPMButton) {
-			controller.down();
 		}
     }
 
 	public void updateBPM() {
-		
-		
 		if (model != null) {
 			int bpm = model.getBPM();
 			if (bpm == 0) {
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("offline");
 				}
-			} else if(bpm == -10){
-				if (bpmOutputLabel != null) {
-        			bpmOutputLabel.setText("Disponible");
-				}				
-			} else if(bpm == -20){
-				if (bpmOutputLabel != null) {
-        			bpmOutputLabel.setText("Cargando");
-				}
-			} else{
+			} else {
 				if (bpmOutputLabel != null) {
         			bpmOutputLabel.setText("Current BPM: " + model.getBPM());
-					}
 				}
 			}
 		}
-
-    
+	}
+  
 	public void updateBeat() {
 		if (beatBar != null) {
 			 beatBar.setValue(100);
 		}
 	}
+<<<<<<< HEAD:bridge_crane_project/src/View/DJView.java
 	
 	public void updateMatriz(int filas, int columnas){
 		int [][] matriz = new int[filas][columnas];
@@ -301,4 +297,6 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver, Matri
 		catch(ClassCastException t) {}
 		
 	}
+=======
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/DJView.java
 }

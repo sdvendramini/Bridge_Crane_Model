@@ -1,6 +1,9 @@
 package View;
     
+<<<<<<< HEAD
 import java.awt.*;
+=======
+>>>>>>> origin/Third
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -14,7 +17,11 @@ import Model.BeatModelInterface;
 import Model.BridgeCraneModel;
 import Model.HeartModel;
 
+<<<<<<< HEAD
 public class ExchangeDJView extends DJView 
+=======
+public class ExchangeDJView extends BridgeCraneView 
+>>>>>>> origin/Third
 {
     public ExchangeDJView(ControllerInterface controller, BeatModelInterface model) 
     {	
@@ -27,6 +34,7 @@ public class ExchangeDJView extends DJView
         JMenuBar select = createMenu();
         viewFrame.setJMenuBar(select);
         viewFrame.pack();
+<<<<<<< HEAD
         viewFrame.setLocation(148+300,200);
 
 	}
@@ -43,6 +51,19 @@ public class ExchangeDJView extends DJView
     	controlFrame.setLocation(150+300,292);
     }
 	
+=======
+	}
+    
+    public void createControls() 
+    {
+    	super.createControls();
+    	if(type == 3)
+        controlFrame.setLocation(150,292);
+
+	}
+    
+
+>>>>>>> origin/Third
 	public JMenuBar createMenu()
 	{
         JMenuBar select = new JMenuBar();
@@ -149,17 +170,29 @@ public class ExchangeDJView extends DJView
 		if(a==1)
 		{
 			BeatModel beatModel1 = new BeatModel();
+<<<<<<< HEAD
 			ControllerInterface c1 = new BeatController(beatModel1,true);
+=======
+			ControllerInterface c1 = new BeatController(beatModel1,2);
+>>>>>>> origin/Third
 		}
 		else if(a==2)
 		{
 			HeartModel heartModel1 = HeartModel.getInstance();
+<<<<<<< HEAD
 	        ControllerInterface c2 = new HeartController(heartModel1,true);
+=======
+	        ControllerInterface c2 = new HeartController(heartModel1,2);
+>>>>>>> origin/Third
 		}
 		else if(a==3)
 		{
 			BridgeCraneModel bridgeCraneModel = new BridgeCraneModel();
+<<<<<<< HEAD
 	        ControllerInterface c3 = new BridgeCraneController(bridgeCraneModel,true);
+=======
+	        ControllerInterface c3 = new BridgeCraneController(bridgeCraneModel,2);
+>>>>>>> origin/Third
 		}
 	}
 }

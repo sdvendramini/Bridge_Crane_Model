@@ -8,13 +8,13 @@ public class BeatController implements ControllerInterface {
 	BeatModelInterface model;
 	DJView view;
 	ExchangeDJView exchangeView;
-	boolean tipo;
+	int tipo;
    
-	public BeatController(BeatModelInterface model, boolean tipo) {
+	public BeatController(BeatModelInterface model, int tipo) {
 		this.model = model;
 		this.tipo = tipo;
 		
-		if(tipo == false)
+		if(tipo == 1)
 		{
 			view = new DJView(this, model);
 	        view.createView();
@@ -22,7 +22,7 @@ public class BeatController implements ControllerInterface {
 			view.disableStopMenuItem();
 			view.enableStartMenuItem();
 		}
-		else
+		else //Cuando se permite el cambio de modelo en tiempo de ejecucion, la vista tiene un nuevo menu
 		{
 			exchangeView = new ExchangeDJView(this, model);
 			exchangeView.createView();
@@ -36,7 +36,7 @@ public class BeatController implements ControllerInterface {
   
 	public void start() {
 		model.on();
-		if(tipo == false)
+		if(tipo == 1)
 		{
 			view.disableStartMenuItem();
 			view.enableStopMenuItem();	
@@ -51,7 +51,7 @@ public class BeatController implements ControllerInterface {
   
 	public void stop() {
 		model.off();
-		if(tipo == false)
+		if(tipo == 1)
 		{
 			view.disableStopMenuItem();
 			view.enableStartMenuItem();
@@ -72,16 +72,24 @@ public class BeatController implements ControllerInterface {
 	public void decreaseBPM() {
         int bpm = model.getBPM();
         
-        if(bpm-1 >= 0)	//agregamos esto
+        if(bpm-1 >= 0)	//Se agreg� para corregir el bug que permit�a setear frecuencias negativas.
         model.setBPM(bpm - 1);
   	}
   
  	public void setBPM(int bpm) {
- 		if(bpm>=0)	//agregado
+ 		if(bpm>=0)	//Se agreg� para corregir el bug que permit�a setear frecuencias negativas.
 		model.setBPM(bpm);
 	}
- 	
- 	public void up() {}
 
- 	public void down() {}
+	@Override
+	public void up() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void down() {
+		// TODO Auto-generated method stub
+		
+	}
 }

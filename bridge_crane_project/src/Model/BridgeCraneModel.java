@@ -9,9 +9,9 @@ import View.MatrizObserver;
 
 public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 	
-	ArrayList beatObservers = new ArrayList();
-	ArrayList bpmObservers = new ArrayList();
-	ArrayList matrizObservers= new ArrayList();
+	ArrayList<BeatObserver> beatObservers = new ArrayList<BeatObserver>();
+	ArrayList<BPMObserver> bpmObservers = new ArrayList<BPMObserver>();
+	ArrayList<MatrizObserver> matrizObservers= new ArrayList<MatrizObserver>();
 	int bpm = -10;
 	int [][] matriz;
 	int filas=8;
@@ -128,19 +128,34 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		}
 	}
 	
-	public void inicializarMatriz(){
+	public void inicializarMatriz()
+	{
 		Random random=new Random();
 		a=random.nextInt(8);
 		b=random.nextInt(8);
+		
+		int c=random.nextInt(8);
+		int d=random.nextInt(8);
+		int e=random.nextInt(8);
+		int f=random.nextInt(8);
+		int g=random.nextInt(8);
+		int h=random.nextInt(8);
 		
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
 			{
 				if (i==a && j==b)
-				matriz[i][j]=1;
+					matriz[i][j]=1;			
 				else 
 					matriz[i][j]=0;				
 			}
+		
+		matriz[c][d] = 2;
+		matriz[e][f] = 2;
+		matriz[g][h] = 2;
+		matriz[e][g] = 2;
+		matriz[f][c] = 2;
+		matriz[e][d] = 2;
 	} 
 	
 	public void cambiarMatriz()
@@ -148,45 +163,84 @@ public class BridgeCraneModel implements BridgeCraneModelInterface, Runnable {
 		for (int i=0; i<filas; i++)
 			for (int j=0; j<columnas; j++)
 			{
-				matriz[i][j]=0;			
+				if (matriz[i][j]==3)
+					matriz[i][j]=2;	
+				else if (matriz[i][j]!=2 && matriz[i][j] != 4 && matriz[i][j] != 5 )
+					matriz[i][j]=0;		
+				else if(matriz[i][j] == 4 && (i!=a || j!=b))
+				{
+					matriz[i][j] = 0;
+					matriz[a][b] = 4;
+				}
 			}
+		
+		if(matriz[a][b]==0)
 		matriz[a][b] = 1;
+		else if(matriz[a][b]==3)
+		matriz[a][b] = 2;
+		else if(matriz[a][b]!=4)
+		matriz[a][b] = 3;	
+		else if(matriz[a][b]==5)
+		matriz[a][b] = 3;	
 	}
+	
 	
 	public void irDerecha()
 	{
 		if(b!=columnas-1 && bpm!=-20)
-			b++;
+		{
+			if(((matriz[a][b+1]==2)&&(matriz[a][b]==4)) == false)
+				b++;
+		}
 		cambiarMatriz();
 	}
 	
 	public void irIzquierda()
 	{
 		if(b!=0 && bpm!=-20)
-			b--;
+		{
+			if(((matriz[a][b-1]==2)&&(matriz[a][b]==4)) == false)
+				b--;
+		}
 		cambiarMatriz();
 	}
 	
 	public void irArriba()
 	{
 		if(a!=0 && bpm!=-20)
-			a--;
+		{
+			if(((matriz[a-1][b]==2)&&(matriz[a][b]==4)) == false)
+				a--;
+		}
 		cambiarMatriz();
 	}
 	
 	public void irAbajo()
 	{
 		if(a!=filas-1 && bpm!=-20)
-			a++;
+		{
+			if(((matriz[a+1][b]==2)&&(matriz[a][b]==4)) == false)
+				a++;
+		}
 		cambiarMatriz();
 	}
 
 	public void setBPM(int i) 
 	{
 		bpm = i;
+		if(bpm==-20 && matriz[a][b]==3)
+		{
+			matriz[a][b] = 4;
+		}
+		else if(bpm==-20 && matriz[a][b]==4) /////
+		{
+			matriz[a][b] = 5;
+		}
+		cambiarMatriz();
 	}
 
-	public int getBPM() {
+	public int getBPM() 
+	{
 		return bpm;
 	}
 	

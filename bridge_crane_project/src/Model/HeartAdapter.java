@@ -39,19 +39,25 @@ public class HeartAdapter implements BeatModelInterface {
 	public void removeObserver(BPMObserver o) {
 		heart.removeObserver(o);
 	}
-	
-	public int[][] getMatriz(){ 
-		return null;
-	}
 
+	@Override
 	public void registerObserver(MatrizObserver o) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void removeObserver(MatrizObserver o) {
 		// TODO Auto-generated method stub
 		
 	}
 
+<<<<<<< HEAD:bridge_crane_project/src/Model/HeartAdapter.java
+=======
+	@Override
+	public int[][] getMatriz() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> origin/Third:heartbeat_project/src/combined/djview/HeartAdapter.java
 }
